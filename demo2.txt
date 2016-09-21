@@ -1,0 +1,326 @@
+<%@ Page Title="" Language="C#" MasterPageFile="~/MASTER.Master" AutoEventWireup="true" CodeBehind="booking.aspx.cs" Inherits="WORLDTOUR_MAYANK.booking" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+     <style type="text/css">
+    .auto-style4 {
+        width: 142px;
+    }
+    .auto-style5 {
+        margin-left: 27px;
+    }
+         .auto-style6 {
+             width: 149%;
+         }
+         .auto-style7 {
+             width: 142px;
+             height: 192px;
+         }
+         .auto-style8 {
+             height: 192px;
+         }
+         .auto-style9 {
+             margin-top: 26px;
+         }
+         .auto-style10 {
+             width: 142px;
+             height: 38px;
+         }
+         .auto-style11 {
+             height: 38px;
+         }
+         body{
+             background-color :blue;
+         }
+     </style>
+<script>
+    function validate()
+    {
+        alert("message");
+        var radio = document.getElementById('<%=RadioButtonList1.ClientID%>');
+        alert(radio[0]);
+        if (radio[0].checked)
+        {
+            alert("PLEASE ENTER THE FIELD");
+
+            return false;
+
+        }
+    }
+</script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <table class="auto-style6">
+    <tr>
+        <td class="auto-style4">FROM</td>
+        <td>
+            <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_select">
+                
+            </asp:DropDownList>
+        </td>
+    </tr>
+    <tr>
+        <td class="auto-style10">TO</td>
+        <td class="auto-style11">
+            <asp:DropDownList ID="DropDownList2" runat="server" OnSelectedIndexChanged="DropDownList2_select">
+                
+            </asp:DropDownList>
+        </td>
+    </tr>
+    <tr>
+        <td class="auto-style7">DATE</td>
+        <td class="auto-style8">
+            <asp:TextBox ID="txtDate" runat="server" Height="23px"></asp:TextBox>
+            <asp:Calendar ID="calender" runat="server" CssClass="auto-style9" OnSelectionChanged="calender_SelectionChanged"></asp:Calendar>
+        </td>
+    </tr>
+    <tr>
+        <td class="auto-style4">BUS TYPE</td>
+        <td>
+            
+            <asp:RadioButtonList ID="RadioButtonList1" runat="server" Height="26px" RepeatDirection="Horizontal" Width="174px" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
+                <asp:ListItem>NON-AC</asp:ListItem>
+                <asp:ListItem>AC</asp:ListItem>
+            </asp:RadioButtonList>
+            
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="RadioButtonList1" ErrorMessage="Enter The required field"></asp:RequiredFieldValidator>
+            
+        </td>
+    </tr>
+    <tr>
+        <td class="auto-style4">NO OF PASSENGER</td>
+        <td>
+            <asp:TextBox ID="txtNumber" runat="server" OnTextChanged="txtNumber_TextChanged"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtNumber" ErrorMessage="Enter The required field"></asp:RequiredFieldValidator>
+        </td>
+    </tr>
+    <tr>
+        <td class="auto-style4">&nbsp;</td>
+        <td>
+            <asp:Button ID="btnSubmit" runat="server" OnClientClick="validate" OnClick="Button1_Click" Text="Submit" BackColor="#CC0066" BorderColor="#CC0099" ForeColor="Black"  />
+            <asp:Button ID="btnCancel" runat="server" CssClass="auto-style5" Text="Cancel" />
+        </td>
+    </tr>
+</table>
+</asp:Content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%@ Page Title="" Language="C#" MasterPageFile="~/MASTER.Master" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="WORLDTOUR_MAYANK.login" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .auto-style4 {
+            width: 73px;
+        }
+    </style>
+    <script>
+        function showMessage()
+        {
+            alert("Credentials are wrong.");
+
+        }
+        function validate()
+        {
+            if (document.getElementById('<%=txtUser.ClientID%>').value.length == "")
+            {
+                alert("fill the required fields");
+                document.getElementById('<%=txtUser.ClientID%>').focus();
+                return false;
+            }
+            if (document.getElementById('<%=txtPass.ClientID%>').value.length == "") {
+                alert("fill the required fields");
+                document.getElementById('<%=txtPass.ClientID%>').focus();
+                return false;
+            }
+        }
+    </script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <table class="auto-style1">
+    <tr>
+        <td class="auto-style4">User Id</td>
+        <td>
+            <asp:TextBox ID="txtUser" runat="server" OnTextChanged="txtUser_TextChanged"></asp:TextBox>
+        </td>
+    </tr>
+    <tr>
+        <td class="auto-style4">Password</td>
+        <td>
+            <asp:TextBox ID="txtPass" runat="server"></asp:TextBox>
+        </td>
+    </tr>
+    <tr>
+        <td class="auto-style4">&nbsp;</td>
+        <td>
+            <asp:Button ID="Button1" runat="server" Text="Submit" OnClientClick="validate()" OnClick="Button1_Click"  />
+            <asp:Button ID="Button2" runat="server" Text="Reset" />
+        </td>
+    </tr>
+</table>
+</asp:Content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%@ Page Title="" Language="C#" MasterPageFile="~/MASTER.Master" AutoEventWireup="true" CodeBehind="register.aspx.cs" Inherits="WORLDTOUR_MAYANK.register" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .auto-style4 {
+            width: 73px;
+        }
+        
+    </style>
+   
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+     <script>
+    function validate()
+    {
+        
+        if (document.getElementById('<%=txtUser.ClientID%>').value.length == "") 
+        {
+            alert("Please fill the required areas.");
+            document.getElementById('<%=txtUser.ClientID%>').focus();
+            return false;
+        }
+        if(document.getElementById('<%=txtPass.ClientID%>').value.length=="")
+        {
+            alert("Please fill the required areas.");
+            document.getElementById('<%=txtPass.ClientID%>').focus();
+            return false;
+        }
+        
+    }
+         
+</script>
+    <p>
+        <table class="auto-style1">
+            <tr>
+                <td class="auto-style4">User Id</td>
+                <td>
+                    <asp:TextBox ID="txtUser" runat="server" OnTextChanged="txtUser_TextChanged"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style4">Password</td>
+                <td>
+                    <asp:TextBox ID="txtPass" runat="server" type="password" > </asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style4">&nbsp;</td>
+                <td>
+                    <asp:Button ID="Button1" runat="server" Text="Submit" OnClientClick="validate()" OnClick="Button1_Click" Style="height: 26px" />
+                    <asp:Button ID="Button2" runat="server" Text="Reset" />
+                </td>
+            </tr>
+        </table>
+        <br />
+    </p>
+    <p>
+    </p>
+</asp:Content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%@ Page Title="" Language="C#" MasterPageFile="~/MASTER.Master" AutoEventWireup="true" CodeBehind="viewBooking.aspx.cs" Inherits="WORLDTOUR_MAYANK.viewBooking" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+   
+    <style type="text/css">
+        .auto-style4 {
+            width: 141px;
+        }
+    </style>
+   
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    
+    <table class="auto-style1">
+        <tr>
+            <td class="auto-style4">
+                <asp:Label ID="ID_LID" runat="server" Text=" REGISTRATION ID"></asp:Label>
+            </td>
+            <td>
+                <asp:TextBox ID="txtID" runat="server"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style4">&nbsp;</td>
+            <td>
+                <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" />
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style4">&nbsp;</td>
+            <td>
+                <asp:GridView ID="gridView" runat="server" >
+                </asp:GridView>
+            </td>
+        </tr>
+    </table>
+    
+</asp:Content>
